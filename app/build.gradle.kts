@@ -4,36 +4,36 @@ plugins {
 }
 
 android {
-    namespace="com.vologhat.pygmaliondemo"
-    compileSdk=34
+    namespace = "com.vologhat.pygmaliondemo"
+    compileSdk = 34
 
     buildFeatures {
-        viewBinding=true
+        viewBinding = true
     }
     defaultConfig {
-        applicationId="com.vologhat.pygmaliondemo"
-        minSdk=14
-        targetSdk=34
-        versionCode=1
-        versionName="1.0"
+        applicationId = "com.vologhat.pygmaliondemo"
+        minSdk = 14
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner="androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            isMinifyEnabled=false
+            isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }
     compileOptions {
-        sourceCompatibility=JavaVersion.VERSION_1_8
-        targetCompatibility=JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget="1.8"
+        jvmTarget = "1.8"
     }
 }
 

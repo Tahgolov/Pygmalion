@@ -9,14 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StyleableRes;
 
 public class PygmalionResources
-extends Resources
-{
+        extends Resources {
     final Resources mOrigResources;
 
-    public PygmalionResources(final Resources src)
-    {
-        super(src.getAssets(),src.getDisplayMetrics(),src.getConfiguration());
-        mOrigResources=src;
+    public PygmalionResources(final Resources src) {
+        super(src.getAssets(), src.getDisplayMetrics(), src.getConfiguration());
+        mOrigResources = src;
     }
 
     @Override
@@ -25,20 +23,19 @@ extends Resources
     }
 
     @Override
-    public TypedArray obtainAttributes(AttributeSet set,@StyleableRes int[] attrs)
-    {
-        final PygmalionTypedArray pda=new PygmalionTypedArray(super.obtainAttributes(set,attrs));
+    public TypedArray obtainAttributes(AttributeSet set, @StyleableRes int[] attrs) {
+        final PygmalionTypedArray pda = new PygmalionTypedArray(super.obtainAttributes(set, attrs));
         return pda.getTypedArray();
     }
 
     @NonNull
     @Override
-    public TypedArray obtainTypedArray(@ArrayRes int id) throws NotFoundException
-    {
-        final PygmalionTypedArray pta=new PygmalionTypedArray(super.obtainTypedArray(id));
+    public TypedArray obtainTypedArray(@ArrayRes int id) throws NotFoundException {
+        final PygmalionTypedArray pta = new PygmalionTypedArray(super.obtainTypedArray(id));
         return pta.getTypedArray();
     }
 
-    public Resources getOriginalResources()
-    { return mOrigResources; }
+    public Resources getOriginalResources() {
+        return mOrigResources;
+    }
 }

@@ -3,19 +3,19 @@ plugins {
 }
 
 android {
-    namespace="com.vologhat.pygmalion"
-    compileSdk=34
+    namespace = "com.vologhat.pygmalion"
+    compileSdk = 34
 
     buildFeatures {
-        androidResources=false
-        buildConfig=true
+        androidResources = false
+        buildConfig = true
     }
     defaultConfig {
-        minSdk=14
-        testInstrumentationRunner="androidx.test.runner.AndroidJUnitRunner"
+        minSdk = 14
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     testOptions {
-        targetSdk=34
+        targetSdk = 34
     }
     buildTypes {
         release {
@@ -23,13 +23,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility=JavaVersion.VERSION_1_8
-        targetCompatibility=JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     packaging {
         resources {
-            excludes+="/META-INF/**"
-            excludes+="/*.properties"
+            excludes += "/META-INF/**"
+            excludes += "/*.properties"
         }
     }
 }

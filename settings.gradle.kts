@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name="Pygmalion"
-include(":app",":library")
+rootProject.name = "Pygmalion"
+include(":app", ":library")

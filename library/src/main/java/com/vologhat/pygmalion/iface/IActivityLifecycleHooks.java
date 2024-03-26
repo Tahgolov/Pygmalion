@@ -8,89 +8,88 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public interface IActivityLifecycleHooks
-extends ActivityLifecycleCallbacks
-{
+        extends ActivityLifecycleCallbacks {
     @Override
-    default void onActivityPreCreated(@NonNull final Activity activity,@Nullable final Bundle savedInstanceState)
-    { }
+    default void onActivityPreCreated(@NonNull final Activity activity, @Nullable final Bundle savedInstanceState) {
+    }
 
     @Override
-    default void onActivityCreated(@NonNull final Activity activity,@Nullable final Bundle savedInstanceState)
-    { }
+    default void onActivityCreated(@NonNull final Activity activity, @Nullable final Bundle savedInstanceState) {
+    }
 
     @Override
-    default void onActivityPostCreated(@NonNull final Activity activity,@Nullable final Bundle savedInstanceState)
-    { }
+    default void onActivityPostCreated(@NonNull final Activity activity, @Nullable final Bundle savedInstanceState) {
+    }
 
     @Override
-    default void onActivityPreStarted(@NonNull final Activity activity)
-    { }
+    default void onActivityPreStarted(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityStarted(@NonNull final Activity activity)
-    { }
+    default void onActivityStarted(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPostStarted(@NonNull final Activity activity)
-    { }
+    default void onActivityPostStarted(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPreResumed(@NonNull final Activity activity)
-    { }
+    default void onActivityPreResumed(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityResumed(@NonNull final Activity activity)
-    { }
+    default void onActivityResumed(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPostResumed(@NonNull final Activity activity)
-    { }
+    default void onActivityPostResumed(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPrePaused(@NonNull final Activity activity)
-    { }
+    default void onActivityPrePaused(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPaused(@NonNull final Activity activity)
-    { }
+    default void onActivityPaused(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPostPaused(@NonNull final Activity activity)
-    { }
+    default void onActivityPostPaused(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPreStopped(@NonNull final Activity activity)
-    { }
+    default void onActivityPreStopped(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityStopped(@NonNull final Activity activity)
-    { }
+    default void onActivityStopped(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPostStopped(@NonNull final Activity activity)
-    { }
+    default void onActivityPostStopped(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPreSaveInstanceState(@NonNull final Activity activity,@Nullable final Bundle outState)
-    { }
+    default void onActivityPreSaveInstanceState(@NonNull final Activity activity, @Nullable final Bundle outState) {
+    }
 
     @Override
-    default void onActivitySaveInstanceState(@NonNull final Activity activity,@Nullable final Bundle outState)
-    { }
+    default void onActivitySaveInstanceState(@NonNull final Activity activity, @Nullable final Bundle outState) {
+    }
 
     @Override
-    default void onActivityPostSaveInstanceState(@NonNull final Activity activity,@Nullable final Bundle outState)
-    { }
+    default void onActivityPostSaveInstanceState(@NonNull final Activity activity, @Nullable final Bundle outState) {
+    }
 
     @Override
-    default void onActivityPreDestroyed(@NonNull final Activity activity)
-    { }
+    default void onActivityPreDestroyed(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityDestroyed(@NonNull final Activity activity)
-    { }
+    default void onActivityDestroyed(@NonNull final Activity activity) {
+    }
 
     @Override
-    default void onActivityPostDestroyed(@NonNull final Activity activity)
-    { }
+    default void onActivityPostDestroyed(@NonNull final Activity activity) {
+    }
 }

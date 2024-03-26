@@ -8,16 +8,14 @@ import com.vologhat.pygmaliondemo.R
 import com.vologhat.pygmaliondemo.ui.fragment.FragmentMain
 
 class MainActivity
-:AppCompatActivity(R.layout.activity_main)
-{
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    : AppCompatActivity(R.layout.activity_main) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(savedInstanceState==null)
+        if (savedInstanceState == null)
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add< FragmentMain >(R.id.fragment_container)
+                add<FragmentMain>(R.id.fragment_container)
             }
     }
 }
