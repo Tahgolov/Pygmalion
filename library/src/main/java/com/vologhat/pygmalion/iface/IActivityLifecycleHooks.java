@@ -7,8 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public interface IActivityLifecycleHooks
-        extends ActivityLifecycleCallbacks {
+public interface IActivityLifecycleHooks extends ActivityLifecycleCallbacks {
     @Override
     default void onActivityPreCreated(@NonNull final Activity activity, @Nullable final Bundle savedInstanceState) {
     }

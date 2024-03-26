@@ -13,8 +13,7 @@ import java.util.List;
  * The modified copy of FactoryMerger from {@link android.view.LayoutInflater}
  * made for using own hooks with original factories
  */
-public class PygmalionFactoryMerger
-        implements LayoutInflater.Factory2 {
+public class PygmalionFactoryMerger implements LayoutInflater.Factory2 {
     private final LayoutInflater.Factory mF1, mF2;
     private final LayoutInflater.Factory2 mF12, mF22;
 
@@ -35,10 +34,10 @@ public class PygmalionFactoryMerger
     @Override
     public View onCreateView(final String name, final Context context, final AttributeSet attrs) {
         View v = createView(name, context, attrs);
-        if (v != null) return v;
+        if(v != null) return v;
         v = mF1.onCreateView(name, context, attrs);
-        if (v == null) v = mF2.onCreateView(name, context, attrs);
-        if (v != null) processCreatedView(v, name, context, attrs);
+        if(v == null) v = mF2.onCreateView(name, context, attrs);
+        if(v != null) processCreatedView(v, name, context, attrs);
         return v;
     }
 
@@ -46,28 +45,28 @@ public class PygmalionFactoryMerger
     public View onCreateView(final View parent, final String name,
                              final Context context, final AttributeSet attrs) {
         View v = createView(name, context, attrs);
-        if (v == null)
+        if(v == null)
             v = mF12 != null
                     ? mF12.onCreateView(parent, name, context, attrs)
                     : mF1.onCreateView(name, context, attrs);
-        if (v == null)
+        if(v == null)
             v = mF22 != null
                     ? mF22.onCreateView(parent, name, context, attrs)
                     : mF2.onCreateView(name, context, attrs);
-        if (v != null) processCreatedView(v, name, context, attrs);
+        if(v != null) processCreatedView(v, name, context, attrs);
         return v;
     }
 
     private View createView(final String name, final Context context, final AttributeSet attrs) {
         View v;
-        for (ILayoutInflaterFactoryHooks handler : mViewHandlers)
-            if ((v = handler.onCreateView(name, context, attrs)) != null)
+        for(ILayoutInflaterFactoryHooks handler : mViewHandlers)
+            if((v = handler.onCreateView(name, context, attrs)) != null)
                 return v;
         return null;
     }
 
     private void processCreatedView(final View targetView, final String name, final Context context, final AttributeSet attrs) {
-        for (ILayoutInflaterFactoryHooks handler : mViewHandlers)
+        for(ILayoutInflaterFactoryHooks handler : mViewHandlers)
             handler.onViewCreated(targetView, name, context, attrs);
     }
 }

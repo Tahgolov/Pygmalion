@@ -44,7 +44,7 @@ public class PygmalionTypedArray {
             sIndicesFld = ReflectionUtils.getField(taClz, "mIndices");
             getValueAtMtd = ReflectionUtils.getMethod(taClz, "getValueAt", int.class, TypedValue.class);
             loadStringValueAtMtd = ReflectionUtils.getMethod(taClz, "loadStringValueAt", int.class);
-        } catch (final Throwable cause) {
+        } catch(final Throwable cause) {
             throw new RuntimeException(cause);
         }
     }
@@ -53,14 +53,14 @@ public class PygmalionTypedArray {
         mTypedArray = ta;
 
         Resources res = ta.getResources();
-        if (res instanceof PygmalionResources)
+        if(res instanceof PygmalionResources)
             res = ((PygmalionResources) res).getOriginalResources();
         mOrigResources = res;
 
         try {
             mData = (int[]) sDataFld.get(ta);
             mIndices = (int[]) sIndicesFld.get(ta);
-        } catch (final Throwable cause) {
+        } catch(final Throwable cause) {
             throw new RuntimeException(cause);
         }
     }
@@ -156,7 +156,7 @@ public class PygmalionTypedArray {
     public int getThemeAttributeId(@StyleableRes int index, final int defValue) {
         index *= Style.STYLE_NUM_ENTRIES;
         final int[] data = mData;
-        if (data[index + Style.STYLE_TYPE] == TypedValue.TYPE_ATTRIBUTE)
+        if(data[index + Style.STYLE_TYPE] == TypedValue.TYPE_ATTRIBUTE)
             return data[index + Style.STYLE_DATA];
         return defValue;
     }
@@ -221,21 +221,21 @@ public class PygmalionTypedArray {
 
         final int[] data = mData;
         final int N = length();
-        for (int i = 0; i < N; ++i) {
+        for(int i = 0; i < N; ++ i) {
             final int index = Style.STYLE_NUM_ENTRIES;
-            if (data[index + Style.STYLE_TYPE] != TypedValue.TYPE_ATTRIBUTE)// Not an attribute, ignore.
+            if(data[index + Style.STYLE_TYPE] != TypedValue.TYPE_ATTRIBUTE)// Not an attribute, ignore.
                 continue;
 
             // Null the entry so that we can safely call getZzz().
             data[index + Style.STYLE_TYPE] = TypedValue.TYPE_NULL;
 
             final int attr = data[index + Style.STYLE_DATA];
-            if (attr == 0)// Useless data, ignore.
+            if(attr == 0)// Useless data, ignore.
                 continue;
 
             // Ensure we have a usable attribute array.
-            if (attrs == null)
-                if (scrap != null && scrap.length == N) {
+            if(attrs == null)
+                if(scrap != null && scrap.length == N) {
                     attrs = scrap;
                     Arrays.fill(attrs, 0);
                 } else attrs = new int[N];
@@ -255,7 +255,7 @@ public class PygmalionTypedArray {
     public boolean getValueAt(@StyleableRes final int index, @NonNull final TypedValue outValue) {
         try {
             return (boolean) getValueAtMtd.invoke(mTypedArray, index, outValue);
-        } catch (final Throwable ignored) {
+        } catch(final Throwable ignored) {
             return false;
         }
     }
@@ -265,7 +265,7 @@ public class PygmalionTypedArray {
     public CharSequence loadStringValueAt(@StyleableRes final int index) {
         try {
             return (CharSequence) loadStringValueAtMtd.invoke(mTypedArray, index);
-        } catch (final Throwable ignored) {
+        } catch(final Throwable ignored) {
             return null;
         }
     }

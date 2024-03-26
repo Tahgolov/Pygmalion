@@ -52,19 +52,19 @@ public class Pygmalion {
             final Method getInitialApplication = ReflectionUtils.getMethod(appGlobalsClz, "getInitialApplication");
 
             sApplication = (Application) getInitialApplication.invoke(null);
-        } catch (final Throwable cause) {
+        } catch(final Throwable cause) {
             throw new RuntimeException("Failed to get application", cause);
         }
 
         //bypass restrictions for Android P+ (thx Android Team)
-        if (AndroidVersioning.isAtLeastPie())
+        if(AndroidVersioning.isAtLeastPie())
             HiddenApiBypass.addHiddenApiExemptions(Constants.EXEMPTIONS);
 
         //init reflection stuff for using it in hooks
         try {
             sResourcesFld = ReflectionUtils.getField(ContextThemeWrapper.class, "mResources");
             sFactorySetFld = ReflectionUtils.getField(LayoutInflater.class, "mFactorySet");
-        } catch (final NoSuchFieldException cause) {
+        } catch(final NoSuchFieldException cause) {
             throw new RuntimeException("Failed to initialize reflection", cause);
         }
 
@@ -86,11 +86,11 @@ public class Pygmalion {
 
     static void attachToResources(final Activity activity)//hook for modifying all possible resources during getting
     {
-        if (activity.getResources() instanceof PygmalionResources) return;
+        if(activity.getResources() instanceof PygmalionResources) return;
 
         try {
             sResourcesFld.set(activity, new PygmalionResources(activity.getResources()));
-        } catch (final Throwable cause) {
+        } catch(final Throwable cause) {
             Log.e(Constants.TAG, "Failed to attach resources:", cause);
         }
     }
@@ -101,17 +101,17 @@ public class Pygmalion {
 
         final LayoutInflater.Factory factory = inflater.getFactory();
         final LayoutInflater.Factory2 factory2 = inflater.getFactory2();
-        if (factory2 instanceof PygmalionFactoryMerger) return;
+        if(factory2 instanceof PygmalionFactoryMerger) return;
 
         try {
             final PygmalionFactoryMerger merger = new PygmalionFactoryMerger(factory, factory2, factory, factory2);
             merger.setViewHandlers(sLayoutInflaterFactoryHooks);
 
             //disable factory setting check if the inflater already has factory
-            if (factory != null || factory2 != null) sFactorySetFld.set(inflater, Boolean.FALSE);
+            if(factory != null || factory2 != null) sFactorySetFld.set(inflater, Boolean.FALSE);
 
             inflater.setFactory2(merger);
-        } catch (final Throwable cause) {
+        } catch(final Throwable cause) {
             Log.e(Constants.TAG, "Failed to attach layout inflater:", cause);
         }
     }
@@ -138,7 +138,7 @@ public class Pygmalion {
     }
 
     static public void load() {
-        for (ActivityLifecycleCallbacks callbacks : sActivityHooks)
+        for(ActivityLifecycleCallbacks callbacks : sActivityHooks)
             sApplication.registerActivityLifecycleCallbacks(callbacks);
 
         sLoaded = true;
@@ -148,11 +148,10 @@ public class Pygmalion {
     @interface Constants {
         String TAG = "Pygmalion";
         //interfaces set that should be exempted from non-SDK restrictions
-        String[] EXEMPTIONS =
-                {
-                        "Landroid/app/Activity;",
-                        "Landroid/content/res/TypedArray;",
-                        "Landroid/view/LayoutInflater;",
-                };
+        String[] EXEMPTIONS = {
+                "Landroid/app/Activity;",
+                "Landroid/content/res/TypedArray;",
+                "Landroid/view/LayoutInflater;",
+        };
     }
 }

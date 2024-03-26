@@ -8,8 +8,7 @@ import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleableRes;
 
-public class PygmalionResources
-        extends Resources {
+public class PygmalionResources extends Resources {
     final Resources mOrigResources;
 
     public PygmalionResources(final Resources src) {
