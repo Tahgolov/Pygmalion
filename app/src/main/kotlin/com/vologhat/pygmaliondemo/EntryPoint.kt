@@ -68,7 +68,7 @@ class EntryPoint : Application() {
     private companion object {
         const val TAG = "PygmalionDemo"
 
-        private val fragmentHooks = mutableListOf<FragmentLifecycleCallbacks>()
+        val fragmentHooks = mutableListOf<FragmentLifecycleCallbacks>()
 
         fun addFragmentHook(fragmentHook: FragmentLifecycleCallbacks) =
             fragmentHooks.add(fragmentHook)

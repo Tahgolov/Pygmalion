@@ -84,7 +84,7 @@ public class Pygmalion {
         );
     }
 
-    static void attachToResources(final Activity activity)//hook for modifying all possible resources during getting
+    static private void attachToResources(final Activity activity)//hook for modifying all possible resources during getting
     {
         if(activity.getResources() instanceof PygmalionResources) return;
 
@@ -95,7 +95,7 @@ public class Pygmalion {
         }
     }
 
-    static void attachToLayoutInflaterFactory(final Activity activity)//hook for changing views created by LayoutInflater
+    static private void attachToLayoutInflaterFactory(final Activity activity)//hook for changing views created by LayoutInflater
     {
         final LayoutInflater inflater = activity.getLayoutInflater();
 
@@ -133,7 +133,7 @@ public class Pygmalion {
     }
 
     //aux function to help with filling hook lists
-    static <H> void addAllHooks(final List<H> hookList, final H[] hooks) {
+    static private <H> void addAllHooks(final List<H> hookList, final H[] hooks) {
         hookList.addAll(Arrays.asList(hooks));
     }
 

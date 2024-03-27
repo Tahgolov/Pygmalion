@@ -25,13 +25,12 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 public class PygmalionTypedArray {
-    final static private TypedValue TMP_VALUE = new TypedValue();
-
     final static private Field sDataFld;
     final static private Field sIndicesFld;
     final static private Method getValueAtMtd;
     final static private Method loadStringValueAtMtd;
 
+    final private TypedValue mTmpValue = new TypedValue();
     final private TypedArray mTypedArray;
     final private Resources mOrigResources;
 
