@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    compileOnly(libs.androidx.annotation)//https://developer.android.com/studio/write/annotations#adding-nullness
+    compileOnly(libs.androidx.annotation)
     implementation(libs.hiddenapibypass)
 
     androidTestImplementation(libs.ext.junit)
